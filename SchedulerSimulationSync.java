@@ -157,11 +157,8 @@ private final java.util.concurrent.Semaphore semaphore = new java.util.concurren
 }
         // TODO Feature 3: signal that one more process is available in the queue
 
-        System.out.println(Colors.BLUE + "  ➕ " + Colors.BOLD + Colors.CYAN + process.getName() + Colors.RESET +
-                Colors.BLUE + " (Priority: " + process.getPriority() + ") added to ready queue" + Colors.RESET +
-                " │ Remaining: " + Colors.YELLOW + process.getRemainingTime() + "ms" + Colors.RESET +
-                " of " + process.getBurstTime() + "ms");
-    }
+       
+    
 
     // Remove and return the thread at the head of the queue (or null if the queue is empty)
     public Thread poll() {
@@ -182,7 +179,7 @@ private final java.util.concurrent.Semaphore semaphore = new java.util.concurren
         list.removeFirst();                 // 2) remove the head (it may be a different thread by now!)
         return head;
     }finally {
-        queueLock.unlock();
+        queueLock.unlock();}
     }
 
 
@@ -209,6 +206,7 @@ try {// TODO Feature 1: protect this access
         queueLock.unlock();
         
     }
+}
 }
 
 // Class representing a process (same as Assignment 1) - executes ONE time quantum per thread start
@@ -464,3 +462,6 @@ public class SchedulerSimulationSync {
         return good;
     }
 }
+}
+
+
